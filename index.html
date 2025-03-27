@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Drone Threat Classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Stars Background -->
+    <div id="stars-container"></div>
+
+    <!-- Front Page -->
+    <div id="front-page">
+        <div class="version-text">VERSION 1.0.3 • ORBITAL SECURITY SYSTEM</div>
+        <h1 class="title">
+            <span class="neon-text">AI Drone</span>
+            <span>Threat Classifier</span>
+        </h1>
+        <button id="scan-button" class="scan-button">Initiate Scan</button>
+        <div class="footer-text">STELLAR SENTRY • ADVANCED THREAT DETECTION SYSTEM</div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard-page">
+        <div class="dashboard-header">
+            <button id="back-button" class="back-button">← Back</button>
+            <h2 class="dashboard-title">Orbital Security Dashboard</h2>
+            <div class="dropdown">
+                <button id="settings-button" class="settings-button">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Settings
+                </button>
+                <div id="settings-dropdown" class="dropdown-content">
+                    <div class="settings-section">
+                        <h3>Alert Settings</h3>
+                        <div class="toggle-row">
+                            <div class="toggle-label">
+                                <svg viewBox="0 0 24 24" width="16" height="16">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>All Alerts</span>
+                            </div>
+                            <label class="toggle">
+                                <input type="checkbox" id="toggle-all-alerts" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="alert-options">
+                            <div class="toggle-row">
+                                <span class="toggle-option">Email Notifications</span>
+                                <label class="toggle">
+                                    <input type="checkbox" id="toggle-email" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="toggle-row">
+                                <span class="toggle-option">SMS Alerts</span>
+                                <label class="toggle">
+                                    <input type="checkbox" id="toggle-sms">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="toggle-row">
+                                <span class="toggle-option">Sound Alerts</span>
+                                <label class="toggle">
+                                    <input type="checkbox" id="toggle-sound" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn full-width" id="test-alert-btn">Test Alert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="dashboard-content">
+            <!-- Main panels container -->
+            <div class="panels-container">
+                <!-- Detection Map Panel -->
+                <div class="panel" id="map-panel">
+                    <div class="panel-header">
+                        <div class="status-dot"></div>
+                        <div class="panel-title">Detection Map</div>
+                    </div>
+                    
+                    <div class="detection-map">
+                        <!-- Map Background -->
+                        <div class="map-background">
+                            <!-- Radar Animation -->
+                            <div class="radar-circles">
+                                <div class="radar-circle circle-1"></div>
+                                <div class="radar-circle circle-2"></div>
+                                <div class="radar-circle circle-3"></div>
+                                <div class="radar-circle circle-4"></div>
+                                
+                                <!-- Radar Sweep -->
+                                <div class="radar-sweep-container">
+                                    <div class="radar-sweep"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Detection Points -->
+                            <div class="detection-point alert-point">
+                                <div class="ping"></div>
+                            </div>
+                            
+                            <div class="detection-point normal-point"></div>
+                            
+                            <!-- Central Point -->
+                            <div class="central-point"></div>
+                        </div>
+                        
+                        <!-- Map Labels -->
+                        <div class="map-legend">
+                            <div class="legend-item">
+                                <span class="legend-dot alert-dot"></span>
+                                <span>Alert</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot normal-dot"></span>
+                                <span>Known Device</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot base-dot"></span>
+                                <span>Base Station</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Compass -->
+                        <div class="compass">
+                            <div class="compass-circle">
+                                <div class="compass-n">N</div>
+                                <div class="compass-e">E</div>
+                                <div class="compass-s">S</div>
+                                <div class="compass-w">W</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Range Indicator -->
+                        <div class="range-indicator">
+                            <div>Range: 500m</div>
+                            <div>Scan Active</div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- Camera Panel -->
+                <div class="panel" id="camera-panel">
+                    <div class="panel-header">
+                        <div class="status-dot"></div>
+                        <div class="panel-title">Live Camera Feed</div>
+                    </div>
+                    
+                    <div class="camera-container">
+                        <video id="camera-feed" autoplay muted playsinline></video>
+                        <div class="camera-overlay"></div>
+                        <div class="camera-static"></div>
+                        <div class="camera-label">
+                            <div class="live-dot"></div>
+                            LIVE
+                        </div>
+                        <div class="camera-detail">AI ENHANCED</div>
+                        <div class="camera-time">REC 00:00:00</div>
+                        <div class="error-message" id="camera-error">Camera access denied</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add this to your HTML where the map panel is located -->
+<div id="map-panel" class="panel active">
+    <!-- Existing map content -->
+    <h3>MORE INFO</h3>
+    <div class="map-visual"></div>
+    
+    <!-- Add this new button -->
+    <a href="index1.html" class="map-button">
+        <i class="fas fa-satellite-dish"></i>
+        STATISTICS---->>>>>>
+    </a>
+</div>
+
+<!-- Add this CSS to your styles -->
+<style>
+    .map-button {
+        display: block;
+        width: 80%;
+        margin: 15px auto 0;
+        padding: 12px 20px;
+        background: linear-gradient(45deg, #1a237e, #0d47a1);
+        border: 2px solid #4fc3f7;
+        border-radius: 6px;
+        color: #e3f2fd;
+        text-align: center;
+        text-decoration: none;
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .map-button:hover {
+        background: linear-gradient(45deg, #0d47a1, #1a237e);
+        border-color: #64ffda;
+        transform: translateY(-2px);
+        box-shadow: 0 0 15px rgba(79, 195, 247, 0.4);
+    }
+
+    .map-button i {
+        margin-right: 8px;
+    }
+</style>
+            <!-- Active Alert -->
+            <div class="alert active" id="active-alert">
+                <svg viewBox="0 0 24 24" class="alert-icon">
+                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" stroke-width="2"/>
+                </svg>
+                <div class="alert-content">
+                    <h3 class="alert-title">Unauthorized Drone Detected</h3>
+                    <p class="alert-description">A drone has been detected in your monitored airspace. Location: North-East perimeter.</p>
+                </div>
+                <button class="btn-icon" id="dismiss-alert">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
